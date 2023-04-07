@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SimpleUDP
 {
-    public class Messager
+    public class Messenger
     {
         public class MessageReceivedEventArgs : EventArgs
         {

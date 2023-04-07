@@ -9,17 +9,17 @@ namespace SimpleUDP
     {
         public static void Main(string[] args)
         {
-            Messager messager = new Messager();
+            Messenger messenger = new Messenger();
             Console.WriteLine("type send to send or listen to listen");
-            messager.MessageReceived += (sender, eventArgs) => Console.WriteLine(eventArgs.Message);
+            messenger.MessageReceived += (sender, eventArgs) => Console.WriteLine(eventArgs.Message);
 
             if (Console.ReadLine() == "send")
             {
-                messager.Send("192.168.1.20", 50000, Console.ReadLine());
+                messenger.Send("192.168.1.20", 50000, Console.ReadLine());
             }
             else
             {
-                messager.StartListening();
+                messenger.StartListening();
             }
 
             
