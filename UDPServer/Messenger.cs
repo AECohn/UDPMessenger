@@ -65,7 +65,7 @@ namespace SimpleUDP
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                //not yet implemented
             }
         }
 
