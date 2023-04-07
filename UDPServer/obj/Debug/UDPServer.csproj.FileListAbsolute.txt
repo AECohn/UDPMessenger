@@ -1,0 +1,7 @@
+C:\Workbench\UDPServer\UDPServer\UDPServer\bin\Debug\UDPServer.exe
+C:\Workbench\UDPServer\UDPServer\UDPServer\bin\Debug\UDPServer.pdb
+C:\Workbench\UDPServer\UDPServer\UDPServer\obj\Debug\UDPServer.csproj.AssemblyReference.cache
+C:\Workbench\UDPServer\UDPServer\UDPServer\obj\Debug\UDPServer.csproj.SuggestedBindingRedirects.cache
+C:\Workbench\UDPServer\UDPServer\UDPServer\obj\Debug\UDPServer.csproj.CoreCompileInputs.cache
+C:\Workbench\UDPServer\UDPServer\UDPServer\obj\Debug\UDPServer.exe
+C:\Workbench\UDPServer\UDPServer\UDPServer\obj\Debug\UDPServer.pdb
