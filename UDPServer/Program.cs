@@ -15,11 +15,12 @@ namespace SimpleUDP
 
             if (Console.ReadLine() == "send")
             {
-                messenger.Send("192.168.1.20", 50000, Console.ReadLine());
+                messenger.Send(IPAddress.Loopback, 50000, Console.ReadLine() );
             }
             else
             {
-                messenger.StartListening();
+                messenger.StartListening(IPAddress.Loopback, 50000);
+                messenger.StopListening();
             }
 
             
