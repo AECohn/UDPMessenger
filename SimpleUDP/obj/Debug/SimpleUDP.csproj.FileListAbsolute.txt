@@ -1,0 +1,7 @@
+C:\Workbench\UDPServer\UDPServer\SimpleUDP\bin\Debug\SimpleUDP.exe
+C:\Workbench\UDPServer\UDPServer\SimpleUDP\bin\Debug\SimpleUDP.pdb
+C:\Workbench\UDPServer\UDPServer\SimpleUDP\obj\Debug\SimpleUDP.csproj.AssemblyReference.cache
+C:\Workbench\UDPServer\UDPServer\SimpleUDP\obj\Debug\SimpleUDP.csproj.SuggestedBindingRedirects.cache
+C:\Workbench\UDPServer\UDPServer\SimpleUDP\obj\Debug\SimpleUDP.csproj.CoreCompileInputs.cache
+C:\Workbench\UDPServer\UDPServer\SimpleUDP\obj\Debug\SimpleUDP.exe
+C:\Workbench\UDPServer\UDPServer\SimpleUDP\obj\Debug\SimpleUDP.pdb

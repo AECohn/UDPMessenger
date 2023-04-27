@@ -27,19 +27,6 @@ namespace SimpleUDP
         /// referred to as "sender"), and a <see cref="MessageReceivedEventArgs"/> object that contains the
         /// message that was received.
         ///
-        /// Example usage:
-        ///
-        /// <code>
-        /// Messenger messenger = new Messenger();
-        ///
-        /// // Attach an event handler to the MessageReceived event
-        /// messenger.MessageReceived += (sender, eventArgs) =>
-        /// {
-        ///     // Display the message on the console
-        ///     Console.WriteLine(eventArgs.Message);
-        /// };
-        /// </code>
-        ///
         /// </remarks>
         public event EventHandler<MessageReceivedEventArgs> MessageReceived;
 
@@ -95,7 +82,7 @@ namespace SimpleUDP
                         // Convert the byte array to a string
                         string message = Encoding.UTF8.GetString(buffer.Result.Buffer);
 
-                        // Display the message on the console
+                        //Raise an event containing the message
                         MessageReceived?.Invoke(this, new MessageReceivedEventArgs { Message = message });
                     }
 
