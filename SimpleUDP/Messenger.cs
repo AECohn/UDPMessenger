@@ -43,10 +43,11 @@ namespace SimpleUDP
         /// </remarks>
         public async Task Start()
         {
+            int port = 12345;
             try
             {
                 UdpClient udp = new UdpClient();
-                IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
+                IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, port);
 
                 udp.Client.Bind(RemoteIpEndPoint);
 

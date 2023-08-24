@@ -26,19 +26,36 @@ namespace SimpleUDP
 
         static void Main(string[] args)
         {
-            UdpClient socket = new UdpClient(5394); // `new UdpClient()` to auto-pick port
-            // schedule the first receive operation:
-            socket.BeginReceive(new AsyncCallback(OnUdpData), socket);
-            // sending data (for the sake of simplicity, back to ourselves):
-            IPEndPoint target = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 5394);
-            // send a couple of sample messages:
-            for (int num = 1; num <= 3; num++)
-            {
-                byte[] message = new byte[num];
-                socket.Send(message, message.Length, target);
-            }
+            // Specify the port to listen on
+            int port = 12345;
 
-            Console.ReadKey();
+            // Create a UDP client to listen for incoming messages
+            UdpClient udpClient = new UdpClient(12345);
+
+            Console.WriteLine("UDP listener started. Waiting for messages...");
+
+            try
+            {
+                while (true)
+                {
+                    // Receive a UDP message and the sender's information
+                    IPEndPoint senderEndPoint = new IPEndPoint(IPAddress.Any, port);
+                    byte[] receivedBytes = udpClient.Receive(ref senderEndPoint);
+
+                    // Convert the received bytes to a string
+                    string receivedMessage = Encoding.UTF8.GetString(receivedBytes);
+
+                    Console.WriteLine($"Received message from {senderEndPoint}: {receivedMessage}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                udpClient.Close();
+            }
         }
     }
 }

@@ -5,3 +5,10 @@ C:\Workbench\UDPServer\UDPServer\SimpleUDP\obj\Debug\SimpleUDP.csproj.SuggestedB
 C:\Workbench\UDPServer\UDPServer\SimpleUDP\obj\Debug\SimpleUDP.csproj.CoreCompileInputs.cache
 C:\Workbench\UDPServer\UDPServer\SimpleUDP\obj\Debug\SimpleUDP.exe
 C:\Workbench\UDPServer\UDPServer\SimpleUDP\obj\Debug\SimpleUDP.pdb
+C:\Workbench\_Module Development\UDP\UDPMessenger\SimpleUDP\bin\Debug\SimpleUDP.exe
+C:\Workbench\_Module Development\UDP\UDPMessenger\SimpleUDP\bin\Debug\SimpleUDP.pdb
+C:\Workbench\_Module Development\UDP\UDPMessenger\SimpleUDP\obj\Debug\SimpleUDP.csproj.AssemblyReference.cache
+C:\Workbench\_Module Development\UDP\UDPMessenger\SimpleUDP\obj\Debug\SimpleUDP.csproj.SuggestedBindingRedirects.cache
+C:\Workbench\_Module Development\UDP\UDPMessenger\SimpleUDP\obj\Debug\SimpleUDP.csproj.CoreCompileInputs.cache
+C:\Workbench\_Module Development\UDP\UDPMessenger\SimpleUDP\obj\Debug\SimpleUDP.exe
+C:\Workbench\_Module Development\UDP\UDPMessenger\SimpleUDP\obj\Debug\SimpleUDP.pdb
