@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SimpleUDP
 {
@@ -11,7 +12,7 @@ namespace SimpleUDP
         {
             public string Message { get; set; }
         }
-   
+
         private bool _listening;
 
         /// <summary>
@@ -40,15 +41,25 @@ namespace SimpleUDP
         /// This method establishes a connection to the specified network address and port, and sends
         /// the specified message over the connection. The connection is then closed.
         /// </remarks>
-        public void Send(IPAddress Address, int Port, string Message)
+        public async Task Start()
         {
             try
             {
-                UdpClient sender = new UdpClient();
+                UdpClient udp = new UdpClient();
+                IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
 
-                sender.Connect(Address, Port);
-                sender.Send(System.Text.Encoding.UTF8.GetBytes(Message), Message.Length);
-                sender.Dispose();
+                udp.Client.Bind(RemoteIpEndPoint);
+
+                
+                //Byte[] receiveBytes = udp.Receive(ref RemoteIpEndPoint);
+                var taskResult = await udp.ReceiveAsync();
+                var receiveBytes = taskResult.Buffer;
+                //string returnData = Encoding.GetString(receiveBytes);
+                string returnData = Encoding.ASCII.GetString(receiveBytes);
+                //MessageReceived.Invoke(this, new MessageReceivedEventArgs { Message = returnData });
+                Console.WriteLine(returnData);
+
+                //udp.Dispose();
             }
             catch (Exception e)
             {
@@ -66,7 +77,7 @@ namespace SimpleUDP
         /// and port. When a packet is received, the message is decoded from a byte array to a UTF-8 encoded
         /// string and the <see cref="MessageReceived"/> event is raised.
         /// </remarks>
-        public void StartListening(IPAddress address, int port)
+        /*public void StartListening(IPAddress address, int port)
         {
             try
             {
@@ -107,6 +118,6 @@ namespace SimpleUDP
         public void StopListening()
         {
             _listening = false;
-        }
+        }*/
     }
 }
