@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -39,6 +40,8 @@ namespace SimpleUDP
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                string test = "banana";
+                
             }
         }
 
@@ -58,7 +61,17 @@ namespace SimpleUDP
 
                         if (result.Buffer.Length > 0)
                         {
-                            Console.WriteLine($"Device: {Encoding.Default.GetString(result.Buffer)} {"\n"} Address: {result.RemoteEndPoint.Address} {"\n"} Port: {result.RemoteEndPoint.Port}");
+                            var stringResult = Encoding.Default.GetString(result.Buffer);
+                            var DeviceInfo = stringResult.Split('\0').Where(x => !string.IsNullOrEmpty(x)).Where(str => Regex.IsMatch(str, @"[a-zA-Z0-9]")).ToList();
+                            DeviceInfo.Add(result.RemoteEndPoint.Address.ToString());
+                            DeviceInfo.Add(result.RemoteEndPoint.Port.ToString());
+
+                            foreach (var item in DeviceInfo)
+                            {
+                                Console.WriteLine(item);
+                            }
+                            Console.WriteLine();
+                            //Console.WriteLine($"Device: {Encoding.Default.GetString(result.Buffer)} {"\n"} Address: {result.RemoteEndPoint.Address} {"\n"} Port: {result.RemoteEndPoint.Port}");
                         }                       
                     }
                 }
