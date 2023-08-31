@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace SimpleUDP
+namespace UDPServer
 {
 
     class Program
@@ -40,6 +37,8 @@ namespace SimpleUDP
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                string test = "banana";
+                
             }
         }
 
@@ -55,7 +54,7 @@ namespace SimpleUDP
 
                     while (IsListening)
                     {
-                        result = await receiveClient.ReceiveAsync();
+                        result =  await receiveClient.ReceiveAsync();
 
                         if (result.Buffer.Length > 0)
                         {
@@ -70,7 +69,7 @@ namespace SimpleUDP
                             }
                             Console.WriteLine();
                             //Console.WriteLine($"Device: {Encoding.Default.GetString(result.Buffer)} {"\n"} Address: {result.RemoteEndPoint.Address} {"\n"} Port: {result.RemoteEndPoint.Port}");
-                        }
+                        }                       
                     }
                 }
                 catch (Exception e)

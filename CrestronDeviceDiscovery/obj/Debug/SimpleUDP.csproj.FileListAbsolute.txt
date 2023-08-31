@@ -11,9 +11,3 @@ C:\Workbench\_Module Development\UDP\UDPMessenger\SimpleUDP\obj\Debug\SimpleUDP.
 C:\Workbench\_Module Development\UDP\UDPMessenger\SimpleUDP\obj\Debug\SimpleUDP.csproj.CoreCompileInputs.cache
 C:\Workbench\_Module Development\UDP\UDPMessenger\SimpleUDP\obj\Debug\SimpleUDP.exe
 C:\Workbench\_Module Development\UDP\UDPMessenger\SimpleUDP\obj\Debug\SimpleUDP.pdb
-C:\Workbench\_Module Development\UDP\CrestronDeviceDiscovery\SimpleUDP\bin\Debug\SimpleUDP.exe
-C:\Workbench\_Module Development\UDP\CrestronDeviceDiscovery\SimpleUDP\bin\Debug\SimpleUDP.pdb
-C:\Workbench\_Module Development\UDP\CrestronDeviceDiscovery\SimpleUDP\obj\Debug\SimpleUDP.csproj.AssemblyReference.cache
-C:\Workbench\_Module Development\UDP\CrestronDeviceDiscovery\SimpleUDP\obj\Debug\SimpleUDP.csproj.CoreCompileInputs.cache
-C:\Workbench\_Module Development\UDP\CrestronDeviceDiscovery\SimpleUDP\obj\Debug\SimpleUDP.exe
-C:\Workbench\_Module Development\UDP\CrestronDeviceDiscovery\SimpleUDP\obj\Debug\SimpleUDP.pdb

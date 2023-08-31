@@ -1,0 +1,6 @@
+C:\Workbench\_Module Development\UDP\CrestronDeviceDiscovery\CrestronDeviceDiscovery\bin\Debug\SimpleUDP.exe
+C:\Workbench\_Module Development\UDP\CrestronDeviceDiscovery\CrestronDeviceDiscovery\bin\Debug\SimpleUDP.pdb
+C:\Workbench\_Module Development\UDP\CrestronDeviceDiscovery\CrestronDeviceDiscovery\obj\Debug\CrestronDeviceDiscovery.csproj.AssemblyReference.cache
+C:\Workbench\_Module Development\UDP\CrestronDeviceDiscovery\CrestronDeviceDiscovery\obj\Debug\CrestronDeviceDiscovery.csproj.CoreCompileInputs.cache
+C:\Workbench\_Module Development\UDP\CrestronDeviceDiscovery\CrestronDeviceDiscovery\obj\Debug\SimpleUDP.exe
+C:\Workbench\_Module Development\UDP\CrestronDeviceDiscovery\CrestronDeviceDiscovery\obj\Debug\SimpleUDP.pdb
