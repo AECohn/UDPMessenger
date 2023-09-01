@@ -54,6 +54,7 @@ public class Utilities
                     .Where(str => Regex.IsMatch(str, @"[a-zA-Z0-9]")).ToList();
                 var InfoTemp = DeviceInfo[1].Split('[');
                 var firmware = InfoTemp[1].Substring(0, InfoTemp[1].IndexOf(' '));
+                var mac = InfoTemp[1].Substring(InfoTemp[1].IndexOf('-')+1);
                 DeviceInfo.Add(message.RemoteEndPoint.Address.ToString());
                 DeviceInfo.Add(message.RemoteEndPoint.Port.ToString());
 
@@ -63,6 +64,7 @@ public class Utilities
                 temp.DeviceInfo = InfoTemp[1];
                 temp.ModelName = InfoTemp[0];
                 temp.Firmware = firmware;
+                temp.MacAddress = mac;
 
             }
         }
@@ -76,7 +78,7 @@ public class Utilities
         public int DevicePort { get; set; }
         public string DeviceInfo { get; set; }
         public string ModelName { get; set; }
-        
         public string Firmware { get; set; }
+        public string MacAddress { get; set; }
     }
 }

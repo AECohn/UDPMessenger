@@ -15,7 +15,7 @@ messenger.MessageReceived += (sender, eventArgs) =>
     Console.WriteLine($"Sent from Port: {Info.DevicePort}");*/
     //Console.WriteLine(Info.ModelName);
     //Console.WriteLine(Info.DeviceInfo);
-    Console.WriteLine(Info.Firmware);
+    Console.WriteLine(Info.MacAddress);
 
     
 };
