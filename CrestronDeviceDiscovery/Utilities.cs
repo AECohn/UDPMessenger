@@ -2,7 +2,7 @@
 
 namespace CrestronDeviceDiscovery;
 
-public class Data
+public class Utilities
 {
     static public byte[] DiscoveryMessage = new byte[]
     {
@@ -38,12 +38,31 @@ public class Data
 
         return null;
     }
-}
 
-public class DeviceData
-{
-    public string DeviceName { get; set; }
-    public string DeviceAddress { get; set; }
-    public int DevicePort { get; set; }
-    public string DeviceInfo { get; set; }
+    /*public static CreateDeviceInfoClass(byte[] message)
+    {
+        if (message.Buffer.Length > 0)
+        {
+            if (!message.RemoteEndPoint.Address.Equals(Utilities.LocalIPAddress()))
+            {
+                var stringResult = Encoding.Default.GetString(message.Buffer);
+                var DeviceInfo = stringResult.Split('\0').Where(x => !string.IsNullOrEmpty(x))
+                    .Where(str => Regex.IsMatch(str, @"[a-zA-Z0-9]")).ToList();
+                DeviceInfo.Add(message.RemoteEndPoint.Address.ToString());
+                DeviceInfo.Add(message.RemoteEndPoint.Port.ToString());
+                DeviceData temp = new DeviceData();
+                temp.DeviceName = DeviceInfo[0];
+                temp.DeviceAddress = DeviceInfo[2];
+                temp.DevicePort = Convert.ToInt32(DeviceInfo[3]);
+                temp.DeviceInfo = DeviceInfo[1];
+    }
+}*/
+
+    public class DeviceData
+    {
+        public string DeviceName { get; set; }
+        public string DeviceAddress { get; set; }
+        public int DevicePort { get; set; }
+        public string DeviceInfo { get; set; }
+    }
 }

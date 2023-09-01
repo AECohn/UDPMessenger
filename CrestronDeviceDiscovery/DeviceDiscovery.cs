@@ -42,7 +42,7 @@ public class DeviceDiscovery
         }
     }
     
-    public static async Task<Dictionary<string, DeviceData>> Listen(int port) //have to give this the ability to know when it's complete
+    /*public static async Task<Dictionary<string, DeviceData>> Listen(int port) //have to give this the ability to know when it's complete
     {
         IsListening = true;
         Dictionary<string, DeviceData> tempDictionary = new Dictionary<string, DeviceData>();
@@ -79,13 +79,13 @@ public class DeviceDiscovery
                             //Devices.Add(DeviceInfo[0], temp);
                             
                             //placeholder for testing
-                            /*
+                            
                             Console.WriteLine(temp.DeviceName);
                             Console.WriteLine(temp.DeviceAddress);
                             Console.WriteLine(temp.DevicePort);
                             Console.WriteLine(temp.DeviceInfo);
                             
-                            */
+                            
                            
 
                             Console.WriteLine();
@@ -114,6 +114,5 @@ public class DeviceDiscovery
             }
             
         }
-        return new Dictionary<string, DeviceData>();
+        return new Dictionary<string, DeviceData>();*/
     }
-}
