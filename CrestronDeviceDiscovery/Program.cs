@@ -9,7 +9,10 @@ Messenger messenger = new Messenger();
 messenger.MessageReceived += (sender, eventArgs) =>
 {
    
-    Console.WriteLine(Encoding.ASCII.GetString(eventArgs.Message.Buffer));
+    //Console.WriteLine(Encoding.ASCII.GetString(eventArgs.Message.Buffer),eventArgs.Message.RemoteEndPoint.Port);
+    var Info = Utilities.CreateDeviceData(eventArgs.Message);
+    Console.WriteLine(Info.DeviceName);
+    Console.WriteLine();
 
     
 };

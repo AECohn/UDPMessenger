@@ -1,4 +1,7 @@
 ﻿using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace CrestronDeviceDiscovery;
 
@@ -39,8 +42,9 @@ public class Utilities
         return null;
     }
 
-    /*public static CreateDeviceInfoClass(byte[] message)
+    public static DeviceData CreateDeviceData(UdpReceiveResult message)
     {
+        DeviceData temp = new DeviceData();
         if (message.Buffer.Length > 0)
         {
             if (!message.RemoteEndPoint.Address.Equals(Utilities.LocalIPAddress()))
@@ -50,13 +54,16 @@ public class Utilities
                     .Where(str => Regex.IsMatch(str, @"[a-zA-Z0-9]")).ToList();
                 DeviceInfo.Add(message.RemoteEndPoint.Address.ToString());
                 DeviceInfo.Add(message.RemoteEndPoint.Port.ToString());
-                DeviceData temp = new DeviceData();
+
                 temp.DeviceName = DeviceInfo[0];
                 temp.DeviceAddress = DeviceInfo[2];
                 temp.DevicePort = Convert.ToInt32(DeviceInfo[3]);
                 temp.DeviceInfo = DeviceInfo[1];
-    }
-}*/
+                
+            }
+        }
+        return temp;
+}
 
     public class DeviceData
     {
