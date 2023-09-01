@@ -52,14 +52,18 @@ public class Utilities
                 var stringResult = Encoding.Default.GetString(message.Buffer);
                 var DeviceInfo = stringResult.Split('\0').Where(x => !string.IsNullOrEmpty(x))
                     .Where(str => Regex.IsMatch(str, @"[a-zA-Z0-9]")).ToList();
+                var InfoTemp = DeviceInfo[1].Split('[');
+                var firmware = InfoTemp[1].Substring(0, InfoTemp[1].IndexOf(' '));
                 DeviceInfo.Add(message.RemoteEndPoint.Address.ToString());
                 DeviceInfo.Add(message.RemoteEndPoint.Port.ToString());
 
                 temp.DeviceName = DeviceInfo[0];
                 temp.DeviceAddress = DeviceInfo[2];
                 temp.DevicePort = Convert.ToInt32(DeviceInfo[3]);
-                temp.DeviceInfo = DeviceInfo[1];
-                
+                temp.DeviceInfo = InfoTemp[1];
+                temp.ModelName = InfoTemp[0];
+                temp.Firmware = firmware;
+
             }
         }
         return temp;
@@ -71,5 +75,8 @@ public class Utilities
         public string DeviceAddress { get; set; }
         public int DevicePort { get; set; }
         public string DeviceInfo { get; set; }
+        public string ModelName { get; set; }
+        
+        public string Firmware { get; set; }
     }
 }
