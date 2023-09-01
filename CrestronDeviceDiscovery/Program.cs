@@ -8,10 +8,11 @@ using CrestronDeviceDiscovery;
 Messenger messenger = new Messenger();
 messenger.MessageReceived += (sender, eventArgs) =>
 {
-   
-    //Console.WriteLine(Encoding.ASCII.GetString(eventArgs.Message.Buffer),eventArgs.Message.RemoteEndPoint.Port);
-    var Info = Utilities.CreateDeviceData(eventArgs.Message);
+    var Info = Utilities.CreateDeviceData(eventArgs.UDPResult);
     Console.WriteLine(Info.DeviceName);
+    Console.WriteLine(Info.DeviceInfo);
+    Console.WriteLine(Info.DeviceAddress);
+    Console.WriteLine($"Sent from Port {Info.DevicePort}");
     Console.WriteLine();
 
     

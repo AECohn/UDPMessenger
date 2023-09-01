@@ -8,7 +8,7 @@ namespace CrestronDeviceDiscovery
 {
     public class MessageReceivedEventArgs : EventArgs
     {
-        public UdpReceiveResult Message { get; set; }
+        public UdpReceiveResult UDPResult { get; set; }
     }
 
     internal class Messenger
@@ -50,7 +50,7 @@ namespace CrestronDeviceDiscovery
                     while (IsListening)
                     {
                         UdpReceiveResult result = await receiveClient.ReceiveAsync();
-                        MessageReceived.Invoke(this, new MessageReceivedEventArgs { Message = result });
+                        MessageReceived.Invoke(this, new MessageReceivedEventArgs { UDPResult = result });
                     }
                 }
                 catch (Exception e)
