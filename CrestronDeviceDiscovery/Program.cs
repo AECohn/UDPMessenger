@@ -16,7 +16,7 @@ messenger.MessageReceived += (sender, eventArgs) =>
     Console.WriteLine($"Device IP: {Info.DeviceAddress}");
     Console.WriteLine($"Sent from Port: {Info.DevicePort}");
 
-    Console.WriteLine();
+    //Console.WriteLine();
 
 
 
@@ -25,6 +25,7 @@ messenger.MessageReceived += (sender, eventArgs) =>
 
 await messenger.Send("255.255.255.255", 41794, Utilities.DiscoveryMessage);
 await messenger.Listen(41794);
+
 
 Console.ReadKey();
 messenger.StopListening();

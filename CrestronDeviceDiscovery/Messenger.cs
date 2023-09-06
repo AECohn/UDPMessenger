@@ -28,7 +28,7 @@ namespace CrestronDeviceDiscovery
 
             try
             {
-                using (UdpClient udp = new UdpClient())
+                using (UdpClient udp = new UdpClient(Port))
                 {
                     await udp.SendAsync(Message, Message.Length, Address, Port);
                 }
@@ -44,13 +44,14 @@ namespace CrestronDeviceDiscovery
         {
             using (UdpClient receiveClient = new UdpClient(port))
             {
+                receiveClient.AllowNatTraversal(true);
                 IsListening = true;
                 try
                 {
                     while (IsListening)
                     {
                         UdpReceiveResult result = await receiveClient.ReceiveAsync();
-                        //if(result.RemoteEndPoint.Address.ToString() != Utilities.LocalIPAddress().ToString())
+                        if(result.RemoteEndPoint.Address.ToString() != Utilities.LocalIPAddress().ToString())
                             MessageReceived.Invoke(this, new MessageReceivedEventArgs { UDPResult = result });
                     }
                 }
