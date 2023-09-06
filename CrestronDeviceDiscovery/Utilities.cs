@@ -47,29 +47,26 @@ public class Utilities
         DeviceData temp = new DeviceData();
         if (message.Buffer.Length > 0)
         {
-            if (!message.RemoteEndPoint.Address.Equals(Utilities.LocalIPAddress()))
-            {
-                var stringResult = Encoding.Default.GetString(message.Buffer);
-                var DeviceInfo = stringResult.Split('\0').Where(x => !string.IsNullOrEmpty(x))
-                    .Where(str => Regex.IsMatch(str, @"[a-zA-Z0-9]")).ToList();
-                var InfoTemp = DeviceInfo[1].Split('[');
-                var firmware = InfoTemp[1].Substring(0, InfoTemp[1].IndexOf(' '));
-                var mac = InfoTemp[1].Substring(InfoTemp[1].IndexOf('-')+1);
-                DeviceInfo.Add(message.RemoteEndPoint.Address.ToString());
-                DeviceInfo.Add(message.RemoteEndPoint.Port.ToString());
+            var stringResult = Encoding.Default.GetString(message.Buffer);
+            var DeviceInfo = stringResult.Split('\0').Where(x => !string.IsNullOrEmpty(x))
+                .Where(str => Regex.IsMatch(str, @"[a-zA-Z0-9]")).ToList();
+            var InfoTemp = DeviceInfo[1].Split('[');
+            var firmware = InfoTemp[1].Substring(0, InfoTemp[1].IndexOf(' '));
+            var mac = InfoTemp[1].Substring(InfoTemp[1].IndexOf('-') + 1);
+            DeviceInfo.Add(message.RemoteEndPoint.Address.ToString());
+            DeviceInfo.Add(message.RemoteEndPoint.Port.ToString());
 
-                temp.DeviceName = DeviceInfo[0];
-                temp.DeviceAddress = DeviceInfo[2];
-                temp.DevicePort = Convert.ToInt32(DeviceInfo[3]);
-                temp.DeviceInfo = InfoTemp[1];
-                temp.ModelName = InfoTemp[0];
-                temp.Firmware = firmware;
-                temp.MacAddress = mac;
-
-            }
+            temp.DeviceName = DeviceInfo[0];
+            temp.DeviceAddress = DeviceInfo[2];
+            temp.DevicePort = Convert.ToInt32(DeviceInfo[3]);
+            temp.DeviceInfo = InfoTemp[1];
+            temp.ModelName = InfoTemp[0];
+            temp.Firmware = firmware;
+            temp.MacAddress = mac;
         }
+
         return temp;
-}
+    }
 
     public class DeviceData
     {

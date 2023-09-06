@@ -9,15 +9,17 @@ Messenger messenger = new Messenger();
 messenger.MessageReceived += (sender, eventArgs) =>
 {
     var Info = Utilities.CreateDeviceData(eventArgs.UDPResult);
-    /*Console.WriteLine($"Device Hostname: {Info.DeviceName}");
-    Console.WriteLine($"Device Info: {Info.DeviceInfo}");
+    Console.WriteLine($"Device ModelName: {Info.ModelName}");
+    Console.WriteLine($"Device Firmware: {Info.Firmware}");
+    Console.WriteLine($"Device Hostname: {Info.DeviceName}");
+    Console.WriteLine($"Device Mac: {Info.MacAddress}");
     Console.WriteLine($"Device IP: {Info.DeviceAddress}");
-    Console.WriteLine($"Sent from Port: {Info.DevicePort}");*/
-    //Console.WriteLine(Info.ModelName);
-    //Console.WriteLine(Info.DeviceInfo);
-    Console.WriteLine(Info.MacAddress);
+    Console.WriteLine($"Sent from Port: {Info.DevicePort}");
 
-    
+    Console.WriteLine();
+
+
+
 };
     //Console.WriteLine(Encoding.ASCII.GetString(eventArgs.Message));
 

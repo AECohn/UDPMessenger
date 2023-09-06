@@ -36,7 +36,7 @@ namespace CrestronDeviceDiscovery
 
             catch (Exception e)
             {
-                //not yet implemented
+               Console.WriteLine(e.Message);
             }
         }
 
@@ -50,12 +50,14 @@ namespace CrestronDeviceDiscovery
                     while (IsListening)
                     {
                         UdpReceiveResult result = await receiveClient.ReceiveAsync();
-                        MessageReceived.Invoke(this, new MessageReceivedEventArgs { UDPResult = result });
+                        //if(result.RemoteEndPoint.Address.ToString() != Utilities.LocalIPAddress().ToString())
+                            MessageReceived.Invoke(this, new MessageReceivedEventArgs { UDPResult = result });
                     }
                 }
                 catch (Exception e)
                 {
-                    //not yet implemented
+                   Console.WriteLine(e.Message);
+
                 }
             }
 
