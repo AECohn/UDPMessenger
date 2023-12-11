@@ -3,12 +3,13 @@
 using System.Net;
 using System.Text;
 using CrestronDeviceDiscovery;
+using SimpleUDP;
 
 
 Messenger messenger = new Messenger();
 messenger.MessageReceived += (sender, eventArgs) =>
 {
-    var Info = Utilities.CreateDeviceData(eventArgs.UDPResult);
+    var Info = Utilities.CreateDeviceData(eventArgs.UdpResult);
     Console.WriteLine($"Device ModelName: {Info.ModelName}");
     Console.WriteLine($"Device Firmware: {Info.Firmware}");
     Console.WriteLine($"Device Hostname: {Info.DeviceName}");
@@ -25,6 +26,7 @@ messenger.MessageReceived += (sender, eventArgs) =>
 
 await messenger.Send("255.255.255.255", 41794, Utilities.DiscoveryMessage);
 await messenger.Listen(41794);
+
 
 
 Console.ReadKey();

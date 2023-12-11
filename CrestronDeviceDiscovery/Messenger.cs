@@ -1,42 +1,42 @@
 ﻿using System;
-using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
+using Dns = System.Net.Dns;
+using IPAddress = System.Net.IPAddress;
+using IPHostEntry = System.Net.IPHostEntry;
 
-namespace CrestronDeviceDiscovery
+namespace SimpleUDP
 {
     public class MessageReceivedEventArgs : EventArgs
     {
-        public UdpReceiveResult UDPResult { get; set; }
+        public UdpReceiveResult UdpResult { get; set; }
     }
 
     internal class Messenger
     {
-        
+        private IPAddress _localAddress = LocalIpAddress();
 
         public void StopListening()
         {
-            IsListening = false;
+            _isListening = false;
         }
 
-        private bool IsListening = false;
+
+        private bool _isListening;
         public event EventHandler<MessageReceivedEventArgs> MessageReceived;
 
-        public async Task Send(string Address, int Port, byte[] Message)
+        public async Task Send(string address, int port, byte[] message)
         {
-
             try
             {
-                using (UdpClient udp = new UdpClient(Port))
+                using (UdpClient udp = new UdpClient())
                 {
-                    await udp.SendAsync(Message, Message.Length, Address, Port);
+                    await udp.SendAsync(message, message.Length, address, port);
                 }
             }
-
             catch (Exception e)
             {
-               Console.WriteLine(e.Message);
+                //ErrorLog.Error(e.Message);
             }
         }
 
@@ -44,24 +44,38 @@ namespace CrestronDeviceDiscovery
         {
             using (UdpClient receiveClient = new UdpClient(port))
             {
-                receiveClient.AllowNatTraversal(true);
-                IsListening = true;
+                _isListening = true;
                 try
                 {
-                    while (IsListening)
+                    while (_isListening)
                     {
                         UdpReceiveResult result = await receiveClient.ReceiveAsync();
-                        if(result.RemoteEndPoint.Address.ToString() != Utilities.LocalIPAddress().ToString())
-                            MessageReceived.Invoke(this, new MessageReceivedEventArgs { UDPResult = result });
+                        if (result.Buffer.Length > 0)
+                            if (result.RemoteEndPoint.Address.ToString() != _localAddress.ToString())
+                                MessageReceived?.Invoke(this, new MessageReceivedEventArgs { UdpResult = result });
                     }
                 }
                 catch (Exception e)
                 {
-                   Console.WriteLine(e.Message);
+                    //ErrorLog.Error(e.Message);
+                }
+            }
+        }
 
+        private static IPAddress LocalIpAddress()
+        {
+            string hostName = Dns.GetHostName();
+            IPHostEntry hostEntry = Dns.GetHostEntry(hostName);
+
+            foreach (IPAddress ipAddress in hostEntry.AddressList)
+            {
+                if (ipAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    return ipAddress;
                 }
             }
 
+            return null;
         }
     }
 }
