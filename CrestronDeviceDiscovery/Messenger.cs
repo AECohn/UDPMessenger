@@ -31,6 +31,10 @@ namespace SimpleUDP
             {
                 using (UdpClient udp = new UdpClient())
                 {
+                    if(address == "224.0.0.1")
+                    {
+                        udp.JoinMulticastGroup(IPAddress.Parse(address));
+                    }
                     await udp.SendAsync(message, message.Length, address, port);
                 }
             }

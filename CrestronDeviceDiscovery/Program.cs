@@ -24,7 +24,7 @@ messenger.MessageReceived += (sender, eventArgs) =>
 };
     //Console.WriteLine(Encoding.ASCII.GetString(eventArgs.Message));
 
-await messenger.Send("255.255.255.255", 41794, Utilities.DiscoveryMessage);
+await messenger.Send("224.0.0.1", 41794, Utilities.DiscoveryMessage);
 await messenger.Listen(41794);
 
 
